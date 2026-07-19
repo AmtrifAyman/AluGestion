@@ -43,6 +43,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://alugestionapi2-zscv79ub.b4a.run',
+]
+
 
 # Application definition
 
