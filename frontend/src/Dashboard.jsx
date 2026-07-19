@@ -13,7 +13,7 @@ function Dashboard() {
         const fetchDashboardData = async () => {
             try {
                 // 1. Njibo l'Tiers (Klyan w Fournisseurs)
-                const resTiers = await axios.get('http://127.0.0.1:8000/api/api/tiers/');
+                const resTiers = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/');
                 const tiers = resTiers.data;
                 
                 let totalClients = 0;
@@ -29,7 +29,7 @@ function Dashboard() {
                 });
 
                 // 2. Njibo l'Masarif (Charges)
-                const resCharges = await axios.get('http://127.0.0.1:8000/api/api/charges/');
+                const resCharges = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/charges/');
                 const charges = resCharges.data;
                 
                 let totalC = 0;

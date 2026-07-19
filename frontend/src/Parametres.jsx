@@ -13,7 +13,7 @@ function Parametres() {
 
     // Mli kat-tchargi l'page, kanjibo l'Paramètres mn l'API
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/parametres/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/parametres/')
             .then(res => {
                 if (res.data.length > 0) {
                     // Kanjibo l'Paramètre lowel (7it charika we7da li kayna)
@@ -30,10 +30,10 @@ function Parametres() {
         try {
             if (idParam) {
                 // Ila kano deja msajlin, kandiro UPDATE (PUT)
-                await axios.put(`http://127.0.0.1:8000/api/api/parametres/${idParam}/`, parametres);
+                await axios.put(`https://alugestionapi4-purfloud.b4a.run/api/api/parametres/${idParam}/`, parametres);
             } else {
                 // Ila kant awel mera, kandiro CREATE (POST)
-                const res = await axios.post('http://127.0.0.1:8000/api/api/parametres/', parametres);
+                const res = await axios.post('https://alugestionapi4-purfloud.b4a.run/api/api/parametres/', parametres);
                 setIdParam(res.data.id);
             }
             setMessage('✅ Paramètres msajlin b naja7!');

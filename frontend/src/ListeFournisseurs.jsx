@@ -5,7 +5,7 @@ function ListeFournisseurs() {
     const [fournisseurs, setFournisseurs] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/')
             .then(res => {
                 // Kanjibo gha l'Fournisseurs
                 const ghaFournisseurs = res.data.filter(t => t.type_tier === 'FOURNISSEUR');

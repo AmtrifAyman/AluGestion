@@ -16,7 +16,7 @@ function Stock({ produits, fetchProduits }) {
     const supprimerProduit = async (id, designation) => {
         if (window.confirm(`Wax mt2aked bghiti tmsa7 "${designation}" mn l'stock b mara?`)) {
             try {
-                await axios.delete(`http://127.0.0.1:8000/api/api/produits/${id}/`);
+                await axios.delete(`https://alugestionapi4-purfloud.b4a.run/api/api/produits/${id}/`);
                 fetchProduits(); // N-actualisiw l'jadwal
             } catch (err) {
                 alert("Mochkil f msi7 dyal l'produit!");
@@ -38,7 +38,7 @@ function Stock({ produits, fetchProduits }) {
     const sauvegarderModification = async (e) => {
         e.preventDefault();
         try {
-            await axios.patch(`http://127.0.0.1:8000/api/api/produits/${produitAEditer.id}/`, {
+            await axios.patch(`https://alugestionapi4-purfloud.b4a.run/api/api/produits/${produitAEditer.id}/`, {
                 designation: produitAEditer.designation,
                 prix_vente: produitAEditer.prix_vente
             });

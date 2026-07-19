@@ -13,7 +13,7 @@ function ChargeForm() {
 
     // 3. Fonction bax njibo l'charges mn l'API w njbdo mnhom ghir les désignations
     const fetchCharges = () => {
-        axios.get('http://127.0.0.1:8000/api/api/charges/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/charges/')
             .then(res => {
                 // Kan-récupériw ga3 les désignations (wakha m3awdin)
                 const toutesDesignations = res.data.map(c => c.designation);
@@ -30,7 +30,7 @@ function ChargeForm() {
 
     const soumettreCharge = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/charges/', charge)
+        axios.post('https://alugestionapi4-purfloud.b4a.run/api/api/charges/', charge)
             .then(res => {
                 alert('Mzyan! Lmasrouf tsjel f systéme.');
                 setCharge({ designation: '', montant: '' });

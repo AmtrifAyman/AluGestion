@@ -11,7 +11,7 @@ function FicheClient() {
 
     // 1. Njibo l'Kliyan f l'bedya
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/')
             .then(res => setClients(res.data.filter(t => t.type_tier === 'CLIENT')))
             .catch(err => console.error(err));
     }, []);
@@ -34,8 +34,8 @@ function FicheClient() {
 
         try {
             // Njibo ga3 les factures w les paiements mn l'API
-            const resFactures = await axios.get('http://127.0.0.1:8000/api/api/factures/');
-            const resPaiements = await axios.get('http://127.0.0.1:8000/api/api/paiements/');
+            const resFactures = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/factures/');
+            const resPaiements = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/paiements/');
 
             // N-filtriw gha dyal had l'client (Kandiro typeof bax ntfadaw mochkil ila kan l'backend kaysifet l'objet kaml wla gha l'ID)
             const clientFactures = resFactures.data.filter(f => 

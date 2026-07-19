@@ -10,7 +10,7 @@ function Login({ onLoginSuccess }) {
         e.preventDefault();
         try {
             // Nsifto l'username w password l'Django
-            const res = await axios.post('http://127.0.0.1:8000/api/api/login/', credentials);
+            const res = await axios.post('https://alugestionapi4-purfloud.b4a.run/api/api/login/', credentials);
             
             // Ila jabhom s7a7, Django ay3tina Token (Ssarout)
             const token = res.data.access;

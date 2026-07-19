@@ -26,9 +26,9 @@ function ArchiveVentes() {
         try {
             // 1. Njibo Factures, Clients, w Paiements
             const [resFactures, resClients, resPaiements] = await Promise.all([
-                axios.get('http://127.0.0.1:8000/api/api/factures/'),
-                axios.get('http://127.0.0.1:8000/api/api/tiers/'),
-                axios.get('http://127.0.0.1:8000/api/api/paiements/')
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/factures/'),
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/'),
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/paiements/')
             ]);
 
             setClients(resClients.data.filter(t => t.type_tier === 'CLIENT'));

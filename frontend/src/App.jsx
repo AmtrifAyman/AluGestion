@@ -33,7 +33,7 @@ function App() {
 
     const fetchProduits = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/api/produits/');
+            const res = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/produits/');
             setProduits(res.data);
         } catch (error) {
             console.error("Mochkil f jiban dyal produits:", error);

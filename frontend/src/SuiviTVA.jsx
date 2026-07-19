@@ -22,10 +22,10 @@ function SuiviTVA() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resFactures = await axios.get('http://127.0.0.1:8000/api/api/factures/');
-                const resAchats = await axios.get('http://127.0.0.1:8000/api/api/achats/');
-                const resTiers = await axios.get('http://127.0.0.1:8000/api/api/tiers/');
-                const resParams = await axios.get('http://127.0.0.1:8000/api/api/parametres/');
+                const resFactures = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/factures/');
+                const resAchats = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/achats/');
+                const resTiers = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/');
+                const resParams = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/parametres/');
 
                 setFactures(resFactures.data);
                 setAchats(resAchats.data);

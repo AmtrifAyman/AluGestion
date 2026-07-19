@@ -5,7 +5,7 @@ function ListeClients() {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/')
             .then(res => {
                 // Kanjibo gha l'Kliyan (CLIENT)
                 const ghaKliyan = res.data.filter(t => t.type_tier === 'CLIENT');

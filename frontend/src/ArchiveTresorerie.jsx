@@ -23,14 +23,14 @@ function ArchiveTresorerie() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resPaiements = await axios.get('http://127.0.0.1:8000/api/api/paiements/');
-                const resTiers = await axios.get('http://127.0.0.1:8000/api/api/tiers/');
+                const resPaiements = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/paiements/');
+                const resTiers = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/');
                 setPaiements(resPaiements.data);
                 setTiers(resTiers.data);
 
                 // Njibo l'charges safely, ila makantx l'API f backend maytplantax l'code
                 try {
-                    const resCharges = await axios.get('http://127.0.0.1:8000/api/api/charges/');
+                    const resCharges = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/charges/');
                     setCharges(resCharges.data);
                 } catch (e) {
                     console.log("Mochkil wla makaynach API dyal charges:", e);

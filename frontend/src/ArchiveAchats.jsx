@@ -25,9 +25,9 @@ function ArchiveAchats() {
         try {
             // 1. Njibo ga3 les données (Achats, Fournisseurs, w Paiements)
             const [resAchats, resFournisseurs, resPaiements] = await Promise.all([
-                axios.get('http://127.0.0.1:8000/api/api/achats/'),
-                axios.get('http://127.0.0.1:8000/api/api/tiers/'),
-                axios.get('http://127.0.0.1:8000/api/api/paiements/')
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/achats/'),
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/'),
+                axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/paiements/')
             ]);
 
             setFournisseurs(resFournisseurs.data.filter(t => t.type_tier === 'FOURNISSEUR'));

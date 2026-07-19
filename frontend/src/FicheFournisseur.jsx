@@ -11,7 +11,7 @@ function FicheFournisseur() {
 
     // 1. Njibo les Fournisseurs
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/tiers/')
             .then(res => setFournisseurs(res.data.filter(t => t.type_tier === 'FOURNISSEUR')))
             .catch(err => console.error(err));
     }, []);
@@ -35,14 +35,14 @@ const handleFournisseurChange = async (e) => {
 
     try {
         // Njibo l'Achats w Nfiltriwhom b l'ID dyal fournisseur
-        const resAchats = await axios.get('http://127.0.0.1:8000/api/api/achats/');
+        const resAchats = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/achats/');
         const achatsFrs = resAchats.data.filter(a => 
             a.fournisseur === parseInt(frsId) || (a.fournisseur && a.fournisseur.id === parseInt(frsId))
         );
         setAchats(achatsFrs);
 
         // HNA L'FIX: Njibo les Paiements w Nfiltriwhom 7ta homa b l'ID dyal fournisseur
-        const resPaiements = await axios.get('http://127.0.0.1:8000/api/api/paiements/');
+        const resPaiements = await axios.get('https://alugestionapi4-purfloud.b4a.run/api/api/paiements/');
         const paiementsFrs = resPaiements.data.filter(p => 
             p.tier === parseInt(frsId) || (p.tier && p.tier.id === parseInt(frsId))
         );

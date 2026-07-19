@@ -19,9 +19,10 @@ import os
 import dj_database_url
 import os
 
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres.yeebtdjwgceadfrxtwuh:F%25sWQr3%2FXCU.yM7@aws-0-eu-west-1.pooler.supabase.com:5432/postgres',
+    'default': dj_database_url.parse(
+        'postgresql://postgres.yeebtdjwgceadfrxtwuh:F%25sWQr3%2FXCU.yM7@aws-0-eu-west-1.pooler.supabase.com:5432/postgres',
         conn_max_age=600
     )
 }
@@ -103,12 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 
 # Password validation
