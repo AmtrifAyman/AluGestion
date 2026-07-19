@@ -1,5 +1,5 @@
 # Khtar l-version dyal Python
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Siyeb blassa fin ghadi y-t7et l-code f s-serveur
 WORKDIR /app
