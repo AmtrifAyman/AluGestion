@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function ListeFournisseurs() {
     const [fournisseurs, setFournisseurs] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        API.get('/api/api/tiers/')
             .then(res => {
                 // Kanjibo gha l'Fournisseurs
                 const ghaFournisseurs = res.data.filter(t => t.type_tier === 'FOURNISSEUR');

@@ -17,7 +17,7 @@ router.register('charges', ChargeViewSet)
 router.register('parametres', ParametresSocieteViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)), # URL dyalk hya localhost:8000/api/tiers ...
+    path('api/', include(router.urls)), # URL dyalk hya localhost:8000/api/api/tiers ...
     path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

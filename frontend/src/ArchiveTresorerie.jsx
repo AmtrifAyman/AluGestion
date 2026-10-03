@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function ArchiveTresorerie() {
     const [paiements, setPaiements] = useState([]);
@@ -23,14 +23,14 @@ function ArchiveTresorerie() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resPaiements = await axios.get('http://127.0.0.1:8000/api/api/paiements/');
-                const resTiers = await axios.get('http://127.0.0.1:8000/api/api/tiers/');
+                const resPaiements = await API.get('/api/api/paiements/');
+                const resTiers = await API.get('/api/api/tiers/');
                 setPaiements(resPaiements.data);
                 setTiers(resTiers.data);
 
                 // Njibo l'charges safely, ila makantx l'API f backend maytplantax l'code
                 try {
-                    const resCharges = await axios.get('http://127.0.0.1:8000/api/api/charges/');
+                    const resCharges = await API.get('/api/api/charges/');
                     setCharges(resCharges.data);
                 } catch (e) {
                     console.log("Mochkil wla makaynach API dyal charges:", e);

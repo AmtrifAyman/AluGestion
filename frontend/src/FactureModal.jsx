@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import html2pdf from 'html2pdf.js';
-import axios from 'axios';
+import API from './api';
 
 const FactureModal = ({ facture, client, onClose }) => {
     const componentRef = useRef();

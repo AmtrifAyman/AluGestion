@@ -20,6 +20,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Daba ay lien kaybda b /api/ ghaymxi l dossier compta y9leb fih
+    # Daba ay lien kaybda b /api/api/ ghaymxi l dossier compta y9leb fih
     path('api/', include('compta.urls')), 
 ]

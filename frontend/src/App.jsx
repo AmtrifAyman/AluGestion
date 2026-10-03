@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 import Stock from './Stock'; 
 import FactureForm from './FactureForm';
 import AchatForm from './AchatForm';
@@ -33,7 +33,7 @@ function App() {
 
     const fetchProduits = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/api/produits/');
+            const res = await API.get('/api/api/produits/');
             setProduits(res.data);
         } catch (error) {
             console.error("Mochkil f jiban dyal produits:", error);
@@ -43,18 +43,18 @@ function App() {
     useEffect(() => {
         const token = localStorage.getItem('access_token');
         if (token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setIsLoggedIn(true);
             fetchProduits();
         }
 
-        const interceptor = axios.interceptors.response.use(
+        const interceptor = API.interceptors.response.use(
             response => response,
             error => {
                 if (error.response && error.response.status === 401) {
                     console.log("Ssarout mat wla ghalet, khass t-logina mn jdid.");
                     localStorage.removeItem('access_token');
-                    delete axios.defaults.headers.common['Authorization'];
+                    delete API.defaults.headers.common['Authorization'];
                     setIsLoggedIn(false);
                 }
                 return Promise.reject(error);
@@ -62,13 +62,13 @@ function App() {
         );
 
         return () => {
-            axios.interceptors.response.eject(interceptor);
+            API.interceptors.response.eject(interceptor);
         };
     }, []);
 
     const handleLogout = () => {
         localStorage.removeItem('access_token');
-        delete axios.defaults.headers.common['Authorization'];
+        delete API.defaults.headers.common['Authorization'];
         setIsLoggedIn(false);
     };
 

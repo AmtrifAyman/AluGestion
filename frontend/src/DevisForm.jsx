@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 import Select from 'react-select';
 import DevisModal from './DevisModal';
 
@@ -26,9 +26,9 @@ function DevisForm() {
 
     useEffect(() => {
         chargerClients();
-        axios.get('http://127.0.0.1:8000/api/api/produits/').then(res => setProduits(res.data));
+        API.get('/api/api/produits/').then(res => setProduits(res.data));
         
-        axios.get('http://127.0.0.1:8000/api/api/parametres/').then(res => {
+        API.get('/api/api/parametres/').then(res => {
             if (res.data.length > 0) {
                 const p = res.data[0];
                 setParametres(p);
@@ -44,12 +44,12 @@ function DevisForm() {
     }, []);
 
     const chargerClients = () => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/').then(res => setClients(res.data.filter(t => t.type_tier === 'CLIENT')));
+        API.get('/api/api/tiers/').then(res => setClients(res.data.filter(t => t.type_tier === 'CLIENT')));
     };
 
     const creerClient = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/tiers/', nouveauClient)
+        API.post('/api/api/tiers/', nouveauClient)
             .then(res => {
                 setClients([...clients, res.data]); 
                 setDevis({ ...devis, client: res.data.id }); 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function SuiviTVA() {
     const [factures, setFactures] = useState([]);
@@ -22,10 +22,10 @@ function SuiviTVA() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resFactures = await axios.get('http://127.0.0.1:8000/api/api/factures/');
-                const resAchats = await axios.get('http://127.0.0.1:8000/api/api/achats/');
-                const resTiers = await axios.get('http://127.0.0.1:8000/api/api/tiers/');
-                const resParams = await axios.get('http://127.0.0.1:8000/api/api/parametres/');
+                const resFactures = await API.get('/api/api/factures/');
+                const resAchats = await API.get('/api/api/achats/');
+                const resTiers = await API.get('/api/api/tiers/');
+                const resParams = await API.get('/api/api/parametres/');
 
                 setFactures(resFactures.data);
                 setAchats(resAchats.data);

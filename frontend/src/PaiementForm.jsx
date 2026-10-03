@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function PaiementForm() {
     const [tiers, setTiers] = useState([]);
@@ -11,7 +11,7 @@ function PaiementForm() {
 
     // Fonction bax njibo l'clients w fournisseurs m3a l'crédit dyalhom
     const fetchTiers = () => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/')
+        API.get('/api/api/tiers/')
             .then(res => setTiers(res.data))
             .catch(err => console.error(err));
     };
@@ -22,7 +22,7 @@ function PaiementForm() {
 
     const soumettrePaiement = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/paiements/', paiement)
+        API.post('/api/api/paiements/', paiement)
             .then(res => {
                 alert('Mzyan! Lkhalas tvalida w l\'crédit nqes.');
                 setPaiement({ tier: '', montant: '', remarque: '' });

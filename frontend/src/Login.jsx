@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from './api';
 
 
 function Login({ onLoginSuccess }) {
@@ -10,7 +10,7 @@ function Login({ onLoginSuccess }) {
         e.preventDefault();
         try {
             // Nsifto l'username w password l'Django
-            const res = await axios.post('http://127.0.0.1:8000/api/api/login/', credentials);
+            const res = await API.post('/api/api/login/', credentials);
             
             // Ila jabhom s7a7, Django ay3tina Token (Ssarout)
             const token = res.data.access;
@@ -19,7 +19,7 @@ function Login({ onLoginSuccess }) {
             localStorage.setItem('access_token', token);
             
             // N-configuriw Axios bax yweli dima y-sifet had ssarout f ay demande jayya
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
             // N3lmo l'App bli rah dkhel mzyan
             onLoginSuccess();

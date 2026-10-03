@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function ChargeForm() {
     // 1. 7yedna categorie, b9at ghir designation w montant
@@ -13,7 +13,7 @@ function ChargeForm() {
 
     // 3. Fonction bax njibo l'charges mn l'API w njbdo mnhom ghir les désignations
     const fetchCharges = () => {
-        axios.get('http://127.0.0.1:8000/api/api/charges/')
+        API.get('/api/api/charges/')
             .then(res => {
                 // Kan-récupériw ga3 les désignations (wakha m3awdin)
                 const toutesDesignations = res.data.map(c => c.designation);
@@ -30,7 +30,7 @@ function ChargeForm() {
 
     const soumettreCharge = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/charges/', charge)
+        API.post('/api/api/charges/', charge)
             .then(res => {
                 alert('Mzyan! Lmasrouf tsjel f systéme.');
                 setCharge({ designation: '', montant: '' });

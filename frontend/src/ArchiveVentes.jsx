@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function ArchiveVentes() {
     const [factures, setFactures] = useState([]);
@@ -26,9 +26,9 @@ function ArchiveVentes() {
         try {
             // 1. Njibo Factures, Clients, w Paiements
             const [resFactures, resClients, resPaiements] = await Promise.all([
-                axios.get('http://127.0.0.1:8000/api/api/factures/'),
-                axios.get('http://127.0.0.1:8000/api/api/tiers/'),
-                axios.get('http://127.0.0.1:8000/api/api/paiements/')
+                API.get('/api/api/factures/'),
+                API.get('/api/api/tiers/'),
+                API.get('/api/api/paiements/')
             ]);
 
             setClients(resClients.data.filter(t => t.type_tier === 'CLIENT'));

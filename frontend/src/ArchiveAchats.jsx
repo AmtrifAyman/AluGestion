@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function ArchiveAchats() {
     const [achats, setAchats] = useState([]);
@@ -25,9 +25,9 @@ function ArchiveAchats() {
         try {
             // 1. Njibo ga3 les données (Achats, Fournisseurs, w Paiements)
             const [resAchats, resFournisseurs, resPaiements] = await Promise.all([
-                axios.get('http://127.0.0.1:8000/api/api/achats/'),
-                axios.get('http://127.0.0.1:8000/api/api/tiers/'),
-                axios.get('http://127.0.0.1:8000/api/api/paiements/')
+                API.get('/api/api/achats/'),
+                API.get('/api/api/tiers/'),
+                API.get('/api/api/paiements/')
             ]);
 
             setFournisseurs(resFournisseurs.data.filter(t => t.type_tier === 'FOURNISSEUR'));

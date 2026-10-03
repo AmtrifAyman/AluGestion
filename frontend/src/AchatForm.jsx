@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 
 function AchatForm() {
     const [fournisseurs, setFournisseurs] = useState([]);
@@ -18,18 +18,18 @@ function AchatForm() {
     });
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/').then(res => setFournisseurs(res.data.filter(t => t.type_tier === 'FOURNISSEUR')));
+        API.get('/api/api/tiers/').then(res => setFournisseurs(res.data.filter(t => t.type_tier === 'FOURNISSEUR')));
         chargerProduits();
     }, []);
 
     const chargerProduits = () => {
-        axios.get('http://127.0.0.1:8000/api/api/produits/').then(res => setProduits(res.data));
+        API.get('/api/api/produits/').then(res => setProduits(res.data));
     };
 
     // FONCTION BAX NKRYIW FOURNISSEUR JDID
     const creerFournisseur = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/tiers/', nouveauFournisseur)
+        API.post('/api/api/tiers/', nouveauFournisseur)
             .then(res => {
                 setFournisseurs([...fournisseurs, res.data]); 
                 setAchat({ ...achat, fournisseur: res.data.id }); 
@@ -89,7 +89,7 @@ function AchatForm() {
                 let idProduitFinal = ligne.produit_id;
 
                 if (ligne.is_new) {
-                    const resProd = await axios.post('http://127.0.0.1:8000/api/api/produits/', {
+                    const resProd = await API.post('/api/api/produits/', {
                         designation: ligne.nom_produit,
                         prix_achat: ligne.prix_achat,
                        prix_vente: ligne.prix_vente,
@@ -97,7 +97,7 @@ function AchatForm() {
                     });
                     idProduitFinal = resProd.data.id;
                 } else if (idProduitFinal) {
-                    await axios.patch(`http://127.0.0.1:8000/api/api/produits/${idProduitFinal}/`, {
+                    await API.patch(`/api/api/produits/${idProduitFinal}/`, {
                         prix_vente: ligne.prix_vente
                     });
                 }
@@ -115,13 +115,13 @@ function AchatForm() {
                 numero_facture: achat.numero_facture === '' ? null : achat.numero_facture,
             };
 
-            const resAchat = await axios.post('http://127.0.0.1:8000/api/api/achats/', dataAchat);
+            const resAchat = await API.post('/api/api/achats/', dataAchat);
             const achat_id = resAchat.data.id; // Chadna l'ID dyal l'achat jdida!
             const fournisseur_id = achat.fournisseur;
 
             // 3. Db nsifto l'koll ligne d'achat bo7dha ne l'api dyalha
             for (let i = 0; i < lignesAEnvoyer.length; i++) {
-               await axios.post('http://127.0.0.1:8000/api/api/lignes-achat/', {
+               await API.post('/api/api/lignes-achat/', {
                     achat: achat_id, // Kankbtroha m3a l'achat dyalna
                     produit: lignesAEnvoyer[i].produit,
                     quantite: lignesAEnvoyer[i].quantite,
@@ -130,9 +130,9 @@ function AchatForm() {
             }
 
             // 4. Db knsifto l'khalas (Paiements)
-            if (paiements.espece > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: fournisseur_id, montant: paiements.espece, mode: 'ESPECE', remarque: `Paiement Espèce - Achat N°${achat_id}` });
-            if (paiements.cheque > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: fournisseur_id, montant: paiements.cheque, mode: 'CHEQUE', remarque: `Paiement Chèque - Achat N°${achat_id}` });
-            if (paiements.virement > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: fournisseur_id, montant: paiements.virement, mode: 'VIREMENT', remarque: `Paiement Virement - Achat N°${achat_id}` });
+            if (paiements.espece > 0) await API.post('/api/api/paiements/', { tier: fournisseur_id, montant: paiements.espece, mode: 'ESPECE', remarque: `Paiement Espèce - Achat N°${achat_id}` });
+            if (paiements.cheque > 0) await API.post('/api/api/paiements/', { tier: fournisseur_id, montant: paiements.cheque, mode: 'CHEQUE', remarque: `Paiement Chèque - Achat N°${achat_id}` });
+            if (paiements.virement > 0) await API.post('/api/api/paiements/', { tier: fournisseur_id, montant: paiements.virement, mode: 'VIREMENT', remarque: `Paiement Virement - Achat N°${achat_id}` });
 
             alert("Achat w l'khalas tsjjlo b naja7, w l'produits t'mettew à jour!");
             window.location.reload();

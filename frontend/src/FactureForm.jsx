@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from './api';
 import Select from 'react-select';
 import FactureModal from './FactureModal';
 
@@ -28,9 +28,9 @@ function FactureForm() {
 
     useEffect(() => {
         chargerClients();
-        axios.get('http://127.0.0.1:8000/api/api/produits/').then(res => setProduits(res.data));
+        API.get('/api/api/produits/').then(res => setProduits(res.data));
         
-        axios.get('http://127.0.0.1:8000/api/api/parametres/').then(res => {
+        API.get('/api/api/parametres/').then(res => {
             if (res.data.length > 0) {
                 const p = res.data[0];
                 setParametres(p);
@@ -40,7 +40,7 @@ function FactureForm() {
             }
         });
 
-        axios.get('http://127.0.0.1:8000/api/api/factures/').then(res => {
+        API.get('/api/api/factures/').then(res => {
             const factures = res.data;
             let prochainNum = 1;
             if (factures.length > 0) {
@@ -53,12 +53,12 @@ function FactureForm() {
     }, []);
 
     const chargerClients = () => {
-        axios.get('http://127.0.0.1:8000/api/api/tiers/').then(res => setClients(res.data.filter(t => t.type_tier === 'CLIENT')));
+        API.get('/api/api/tiers/').then(res => setClients(res.data.filter(t => t.type_tier === 'CLIENT')));
     };
 
     const creerClient = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/api/tiers/', nouveauClient)
+        API.post('/api/api/tiers/', nouveauClient)
             .then(res => {
                 setClients([...clients, res.data]); 
                 setFacture({ ...facture, client: res.data.id }); 
@@ -119,13 +119,13 @@ function FactureForm() {
                 montant_ttc: totauxFinal.ttc
             };
 
-            const resFacture = await axios.post('http://127.0.0.1:8000/api/api/factures/', dataFacture);
+            const resFacture = await API.post('/api/api/factures/', dataFacture);
             const client_id = facture.client;
             const facture_id = resFacture.data.id; 
 
             for (let i = 0; i < facture.lignes.length; i++) {
                 const line = facture.lignes[i];
-                await axios.post('http://127.0.0.1:8000/api/api/lignes-facture/', {
+                await API.post('/api/api/lignes-facture/', {
                     facture: facture_id,
                     produit: parseInt(line.produit),
                     quantite: parseInt(line.quantite),
@@ -133,9 +133,9 @@ function FactureForm() {
                 });
             }
 
-            if (paiements.espece > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: client_id, montant: paiements.espece, mode: 'ESPECE', remarque: `Avance Espèce - Facture N°${facture_id}`, facture: facture_id });
-            if (paiements.cheque > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: client_id, montant: paiements.cheque, mode: 'CHEQUE', remarque: `Avance Chèque - Facture N°${facture_id}`, facture: facture_id });
-            if (paiements.virement > 0) await axios.post('http://127.0.0.1:8000/api/api/paiements/', { tier: client_id, montant: paiements.virement, mode: 'VIREMENT', remarque: `Avance Virement - Facture N°${facture_id}`, facture: facture_id });
+            if (paiements.espece > 0) await API.post('/api/api/paiements/', { tier: client_id, montant: paiements.espece, mode: 'ESPECE', remarque: `Avance Espèce - Facture N°${facture_id}`, facture: facture_id });
+            if (paiements.cheque > 0) await API.post('/api/api/paiements/', { tier: client_id, montant: paiements.cheque, mode: 'CHEQUE', remarque: `Avance Chèque - Facture N°${facture_id}`, facture: facture_id });
+            if (paiements.virement > 0) await API.post('/api/api/paiements/', { tier: client_id, montant: paiements.virement, mode: 'VIREMENT', remarque: `Avance Virement - Facture N°${facture_id}`, facture: facture_id });
             
             const leClient = clients.find(c => c.id === client_id);
             const completeFactureData = {
