@@ -104,7 +104,7 @@ function App() {
             {/* ===================== SIDEBAR ===================== */}
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
-                    <span>🏢 AluGestion</span>
+                    <span> AluGestion</span>
                     <button className="close-sidebar-btn" onClick={toggleSidebar}>✕</button>
                 </div>
 
@@ -114,7 +114,7 @@ function App() {
                     <button 
                         className={pageActuelle === 'DASHBOARD' ? 'active' : ''} 
                         onClick={() => changerPage('DASHBOARD')}>
-                        📊 Dashboard
+                         Dashboard
                     </button>
 
                     {/* Commercial (Caché sur Mobile) */}
@@ -122,17 +122,17 @@ function App() {
                     <button 
                         className={`hide-on-mobile ${pageActuelle === 'VENTE' ? 'active' : ''}`} 
                         onClick={() => changerPage('VENTE')}>
-                        🛒 Nouvelle Vente
+                         Nouvelle Vente
                     </button>
                     <button 
                         className={`hide-on-mobile ${pageActuelle === 'ACHAT' ? 'active' : ''}`} 
                         onClick={() => changerPage('ACHAT')}>
-                        📥 Nouvel Achat
+                         Nouvel Achat
                     </button>
                     <button 
                         className={`hide-on-mobile ${pageActuelle === 'DevisForm' ? 'active' : ''}`} 
                         onClick={() => changerPage('DevisForm')}>
-                        📝 Devis
+                         Devis
                     </button>
 
                     {/* Stocks & Tiers */}
@@ -140,27 +140,27 @@ function App() {
                     <button 
                         className={pageActuelle === 'STOCK' ? 'active' : ''} 
                         onClick={() => changerPage('STOCK')}>
-                        📦 Stock
+                         Stock
                     </button>
                     <button 
                         className={pageActuelle === 'CLIENTS' ? 'active' : ''} 
                         onClick={() => changerPage('CLIENTS')}>
-                        👥 Clients (Kridi)
+                         Clients (Kridi)
                     </button>
                     <button 
                         className={pageActuelle === 'FOURNISSEURS' ? 'active' : ''} 
                         onClick={() => changerPage('FOURNISSEURS')}>
-                        🏭 Fournisseurs
+                         Fournisseurs
                     </button>
                     <button 
                         className={pageActuelle === 'FICHE_CLIENT' ? 'active' : ''} 
                         onClick={() => changerPage('FICHE_CLIENT')}>
-                        📋 Fiche Client
+                         Fiche Client
                     </button>
                     <button 
                         className={pageActuelle === 'FicheFournisseur' ? 'active' : ''} 
                         onClick={() => changerPage('FicheFournisseur')}>
-                        📋 Fiche Fournisseur
+                         Fiche Fournisseur
                     </button>
 
                     {/* Trésorerie & Archives */}
@@ -168,27 +168,27 @@ function App() {
                     <button 
                         className={`hide-on-mobile ${pageActuelle === 'ChargeForm' ? 'active' : ''}`} 
                         onClick={() => changerPage('ChargeForm')}>
-                        💸 Charges
+                         Charges
                     </button>
                     <button 
                         className={`hide-on-mobile ${pageActuelle === 'PAIEMENT' ? 'active' : ''}`} 
                         onClick={() => changerPage('PAIEMENT')}>
-                        💰 Paiements
+                         Paiements
                     </button>
                     <button 
                         className={pageActuelle === 'ArchiveVentes' ? 'active' : ''} 
                         onClick={() => changerPage('ArchiveVentes')}>
-                        📅 Archive Ventes
+                         Archive Ventes
                     </button>
                     <button 
                         className={pageActuelle === 'ARCHIVE_ACHAT' ? 'active' : ''} 
                         onClick={() => changerPage('ARCHIVE_ACHAT')}>
-                        📅 Archive Achats
+                         Archive Achats
                     </button>
                     <button 
                         className={pageActuelle === 'ArchiveTresorerie' ? 'active' : ''} 
                         onClick={() => changerPage('ArchiveTresorerie')}>
-                        📅 Archive Trésorerie
+                         Archive Trésorerie
                     </button>
                 </div>
             </aside>
@@ -202,7 +202,7 @@ function App() {
                         {/* Optionnel: Titre de la page actuelle */}
                     </h2>
                     <button onClick={handleLogout} className="logout-btn">
-                        Se Déconnecter 🚪
+                        Se Déconnecter 
                     </button>
                 </header>
 

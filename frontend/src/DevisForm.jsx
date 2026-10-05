@@ -133,7 +133,7 @@ function DevisForm() {
         <div style={{ padding: '20px', border: '1px solid #ccc', marginTop: '20px' }}>
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2>📋 Nouveau Devis</h2>
+                <h2> Nouveau Devis</h2>
                 <h3 style={{ color: '#6f42c1' }}>{devis.numero_devis}</h3>
             </div>
 
@@ -146,13 +146,13 @@ function DevisForm() {
                             options={clientOptions}
                             value={selectedClientOption}
                             onChange={(selectedOption) => setDevis({...devis, client: selectedOption ? selectedOption.value : ''})}
-                            placeholder="Kteb wla khtar client..."
+                            placeholder="Saisir ou sélectionner un client..."
                             isClearable={true}
                             isSearchable={true}
                         />
                     </div>
                     <button type="button" onClick={() => setShowClientModal(true)} style={{ marginLeft: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', padding: '9px 10px', borderRadius: '4px', cursor: 'pointer' }}>
-                        + Client Jdid
+                        + Nouveau client
                     </button>
                 </div>
                 
@@ -181,10 +181,10 @@ function DevisForm() {
                         <input type="number" step="0.01" placeholder="Prix Unitaire" required value={ligne.prix_unitaire} onChange={(e) => handleLigneChange(index, 'prix_unitaire', parseFloat(e.target.value))} style={{ width: '110px', padding: '8px' }} /> DH
                     </div>
                 ))}
-                <button type="button" onClick={ajouterLigne} style={{ marginBottom: '20px', padding: '8px 15px' }}>+ Zid Produit</button>
+                <button type="button" onClick={ajouterLigne} style={{ marginBottom: '20px', padding: '8px 15px' }}>+ Ajouter un produit</button>
 
                 <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#fff3cd', border: '1px solid #ffeeba', borderRadius: '5px' }}>
-                    <h4 style={{ margin: '0 0 10px 0', color: '#856404' }}>🎁 Remise (Khasm ikhtiyari)</h4>
+                    <h4 style={{ margin: '0 0 10px 0', color: '#856404' }}> Remise </h4>
                     <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                         <div>
                             <label>Type de Remise :</label><br/>
@@ -193,7 +193,7 @@ function DevisForm() {
                                 onChange={(e) => setDevis({...devis, type_remise: e.target.value, valeur_remise: 0})} 
                                 style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', marginTop: '5px', color: 'black' }}
                             >
-                                <option value="AUCUNE">Aucune (Makanx Remise)</option>
+                                <option value="AUCUNE">Aucune </option>
                                 <option value="POURCENTAGE">Pourcentage (%)</option>
                                 <option value="MONTANT">Montant Fixe (DH)</option>
                             </select>
@@ -217,7 +217,7 @@ function DevisForm() {
 
                 {/* Recapitulatif dyal l-calcul baraka */}
                 <div style={{ padding: '15px', backgroundColor: '#e9ecef', borderRadius: '8px', marginBottom: '20px' }}>
-                    <h3 style={{ margin: '0 0 15px 0', color: '#343a40' }}>📊 Total Estimé</h3>
+                    <h3 style={{ margin: '0 0 15px 0', color: '#343a40' }}> Total Estimé</h3>
                     
                     <div style={{ fontSize: '16px', color: '#495057' }}>
                         <p>Total Brut : <b>{totaux.brut.toFixed(2)} DH</b></p>

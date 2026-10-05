@@ -65,17 +65,17 @@ function Dashboard() {
 
     return (
         <div>
-            <h2 style={{ marginBottom: '20px' }}>📈 Tableau de Bord (Résumé)</h2>
+            <h2 style={{ marginBottom: '20px' }}> Tableau de Bord (Résumé)</h2>
             
             <div className="card-group">
                 
                 {/* Carte dyal l'kridi li katsal l'klyan */}
                 <div className="stat-card success">
-                    <h3>Flousi 3nd L'klyan</h3>
+                    <h3>Créances clients</h3>
                     <p className="value">
                         {stats.kridiClients.toFixed(2)} DH
                     </p>
-                    <small style={{ color: 'var(--muted)' }}>Total dyal l'kridi li makhlsokch fih</small>
+                    <small style={{ color: 'var(--muted)' }}>Total des créances</small>
                 </div>
 
                 {/* Carte dyal kridi d sl3a li kaysalouk */}
@@ -84,16 +84,16 @@ function Dashboard() {
                     <p className="value">
                         {stats.dettesFournisseurs.toFixed(2)} DH
                     </p>
-                    <small style={{ color: 'var(--muted)' }}>Total li khassk t-kheles l'mwalin sl3a</small>
+                    <small style={{ color: 'var(--muted)' }}>Total des dettes</small>
                 </div>
 
                 {/* Carte dyal l'masarif (Charges) */}
                 <div className="stat-card warning">
-                    <h3>Total dyal l'Masarif</h3>
+                    <h3>Total des Charges</h3>
                     <p className="value">
                         {stats.totalCharges.toFixed(2)} DH
                     </p>
-                    <small style={{ color: 'var(--muted)' }}>L'kra, daw, transport, etc...</small>
+                    <small style={{ color: 'var(--muted)' }}>Loyer, électricité, transport, etc.</small>
                 </div>
 
             </div>

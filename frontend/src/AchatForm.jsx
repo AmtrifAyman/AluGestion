@@ -146,7 +146,7 @@ function AchatForm() {
     const totaux = calculerTotaux();
     return (
         <div style={{ padding: '20px', border: '1px solid #ccc', marginTop: '20px' }}>
-            <h2>🛒 Nouvel Achat</h2>
+            <h2> Nouvel Achat</h2>
             <form onSubmit={soumettreAchat}>
                 
                 <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', alignItems: 'flex-end' }}>
@@ -159,7 +159,7 @@ function AchatForm() {
                             </select>
                         </div>
                         <button type="button" onClick={() => setShowFournisseurModal(true)} style={{ backgroundColor: '#007bff', color: 'white', border: 'none', padding: '0 15px', borderRadius: '4px', cursor: 'pointer', height: '35px' }}>
-                            + Fournisseur Jdid
+                            + Nouveau fournisseur
                         </button>
                     </div>
                     
@@ -221,7 +221,7 @@ function AchatForm() {
                 <br/>
 
                 <div style={{ padding: '15px', backgroundColor: '#e9ecef', borderRadius: '8px', marginBottom: '20px' }}>
-                    <h3 style={{ margin: '0 0 15px 0', color: '#343a40' }}>💸 Lkhalas w Total</h3>
+                    <h3 style={{ margin: '0 0 15px 0', color: '#343a40' }}>Paiement et Total</h3>
                     
                     <div style={{ display: 'flex', gap: '15px', marginBottom: '15px' }}>
                         <div>
@@ -243,8 +243,8 @@ function AchatForm() {
                     <div style={{ fontSize: '16px', color: '#495057' }}>
                         <p style={{ fontSize: '20px', color: '#007bff' }}>TOTAL ACHAT : <b>{totaux.brut.toFixed(2)} DH</b></p>
                         <hr style={{ borderColor: '#ced4da' }} />
-                        <p>Khlesna Fih : <b>{totaux.paye.toFixed(2)} DH</b></p>
-                        <p>Kridi li 3lina : <b style={{ color: totaux.reste > 0 ? 'red' : 'green' }}>{totaux.reste.toFixed(2)} DH</b></p>
+                        <p>Payé : <b>{totaux.paye.toFixed(2)} DH</b></p>
+                        <p>Dette en cours : <b style={{ color: totaux.reste > 0 ? 'red' : 'green' }}>{totaux.reste.toFixed(2)} DH</b></p>
                     </div>
                 </div>
 

@@ -55,9 +55,9 @@ const handleFournisseurChange = async (e) => {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h2>🏭 Fiche Fournisseur</h2>
+            <h2> Fiche Fournisseur</h2>
             <select onChange={handleFournisseurChange} value={selectedFournisseurId} style={{ padding: '10px', width: '300px' }}>
-                <option value="">-- Khtar le Fournisseur --</option>
+                <option value="">-- Sélectionner le fournisseur --</option>
                 {fournisseurs.map(f => <option key={f.id} value={f.id}>{f.nom}</option>)}
             </select>
 
@@ -96,7 +96,7 @@ const handleFournisseurChange = async (e) => {
                     </table>
 
                     {/* Table Paiements */}
-                    <h4 style={{ marginTop: '20px' }}>Historique des Paiements (Khlas li 3tina lih)</h4>
+                    <h4 style={{ marginTop: '20px' }}>Historique des Paiements </h4>
                     <table border="1" style={{ width: '100%', borderCollapse: 'collapse' }}>
                         <thead>
                             <tr>

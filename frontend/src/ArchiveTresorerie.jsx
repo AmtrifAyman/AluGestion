@@ -108,18 +108,18 @@ function ArchiveTresorerie() {
 
     return (
         <div style={{ padding: '20px', fontFamily: 'sans-serif', backgroundColor: '#f8f9fa', borderRadius: '8px', marginTop: '30px', border: '1px solid #ddd' }}>
-            <h2 style={{ color: '#2c3e50', borderBottom: '2px solid #2c3e50', paddingBottom: '10px' }}>💰 Suivi de Trésorerie (Flux Financiers)</h2>
+            <h2 style={{ color: '#2c3e50', borderBottom: '2px solid #2c3e50', paddingBottom: '10px' }}> Suivi de Trésorerie (Flux Financiers)</h2>
 
             {/* --- FILTER BLOCK --- */}
             <div style={{ display: 'flex', gap: '20px', marginBottom: '25px', backgroundColor: '#ffffff', padding: '15px', borderRadius: '6px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
                 <div>
-                    <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Chhar :</label>
+                    <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Mois :</label>
                     <select value={moisSelectionne} onChange={(e) => setMoisSelectionne(e.target.value)} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}>
                         {MOIS.map(m => <option key={m.id} value={m.id}>{m.nom}</option>)}
                     </select>
                 </div>
                 <div>
-                    <label style={{ fontWeight: 'bold', marginRight: '10px' }}>L'3am :</label>
+                    <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Année :</label>
                     <select value={anneeSelectionnee} onChange={(e) => setAnneeSelectionnee(e.target.value)} style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}>
                         {ANNEES.map(a => <option key={a} value={a}>{a}</option>)}
                     </select>
@@ -129,15 +129,15 @@ function ArchiveTresorerie() {
             {/* --- CARDS DYAL L'KPI --- */}
             <div style={{ display: 'flex', gap: '20px', marginBottom: '30px' }}>
                 <div style={{ flex: 1, padding: '20px', backgroundColor: '#d4edda', borderRadius: '8px', color: '#155724', borderLeft: '5px solid #28a745' }}>
-                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}>📥 Total Encaissements</span>
+                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}> Total Encaissements</span>
                     <h2 style={{ margin: '10px 0 0 0', fontSize: '28px' }}>+{totalEncaissements.toFixed(2)} DH</h2>
                 </div>
                 <div style={{ flex: 1, padding: '20px', backgroundColor: '#f8d7da', borderRadius: '8px', color: '#721c24', borderLeft: '5px solid #dc3545' }}>
-                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}>📤 Total Décaissements</span>
+                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}> Total Décaissements</span>
                     <h2 style={{ margin: '10px 0 0 0', fontSize: '28px' }}>-{totalDecaissements.toFixed(2)} DH</h2>
                 </div>
                 <div style={{ flex: 1, padding: '20px', backgroundColor: soldeDuMois >= 0 ? '#d1ecf1' : '#fff3cd', borderRadius: '8px', color: soldeDuMois >= 0 ? '#0c5460' : '#856404', borderLeft: soldeDuMois >= 0 ? '5px solid #17a2b8' : '5px solid #ffc107' }}>
-                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}>⚖️ Solde du Mois (Cash Net)</span>
+                    <span style={{ fontSize: '14px', textTransform: 'uppercase', fontWeight: 'bold' }}> Solde du Mois (Cash Net)</span>
                     <h2 style={{ margin: '10px 0 0 0', fontSize: '28px' }}>{soldeDuMois.toFixed(2)} DH</h2>
                 </div>
             </div>
@@ -148,7 +148,7 @@ function ArchiveTresorerie() {
                 {/* 1. TABLE DYAL L'ENCAISSEMENTS */}
                 <div style={{ flex: 1, minWidth: '450px', backgroundColor: '#fff', padding: '15px', borderRadius: '6px', border: '1px solid #eee' }}>
                     <h3 style={{ color: '#28a745', marginTop: '0', display: 'flex', justifyContent: 'space-between' }}>
-                        <span>📥 Détail des Encaissements (Dkhla)</span>
+                        <span> Détail des Encaissements </span>
                     </h3>
                     <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%', fontSize: '14px', borderColor: '#eee' }}>
                         <thead style={{ backgroundColor: '#28a745', color: '#fff' }}>
@@ -161,7 +161,7 @@ function ArchiveTresorerie() {
                         </thead>
                         <tbody>
                             {encaissementsDuMois.length === 0 ? (
-                                <tr><td colSpan="4" style={{ textAlign: 'center', padding: '15px', color: '#888' }}>Makayn 7ta dkhla msejla f had chhar.</td></tr>
+                                <tr><td colSpan="4" style={{ textAlign: 'center', padding: '15px', color: '#888' }}>Aucun encaissement n'est enregistré ce mois-ci.</td></tr>
                             ) : (
                                 encaissementsDuMois.map(p => {
                                     const tierInfo = typeof p.tier === 'object' ? p.tier : getTierInfo(p.tier);
@@ -181,7 +181,7 @@ function ArchiveTresorerie() {
 
                 {/* 2. TABLE DYAL L'DECAISSEMENTS */}
                 <div style={{ flex: 1, minWidth: '450px', backgroundColor: '#fff', padding: '15px', borderRadius: '6px', border: '1px solid #eee' }}>
-                    <h3 style={{ color: '#dc3545', marginTop: '0' }}>📤 Détail des Décaissements (Khrja)</h3>
+                    <h3 style={{ color: '#dc3545', marginTop: '0' }}> Détail des Décaissements </h3>
                     <table border="1" cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%', fontSize: '14px', borderColor: '#eee' }}>
                         <thead style={{ backgroundColor: '#dc3545', color: '#fff' }}>
                             <tr>
@@ -193,7 +193,7 @@ function ArchiveTresorerie() {
                         </thead>
                         <tbody>
                             {tousLesDecaissements.length === 0 ? (
-                                <tr><td colSpan="4" style={{ textAlign: 'center', padding: '15px', color: '#888' }}>Makayn 7ta khrja msejla f had chhar.</td></tr>
+                                <tr><td colSpan="4" style={{ textAlign: 'center', padding: '15px', color: '#888' }}>Aucun décaissement n'est enregistré ce mois-ci.</td></tr>
                             ) : (
                                 tousLesDecaissements.map(d => (
                                     <tr key={d.id}>

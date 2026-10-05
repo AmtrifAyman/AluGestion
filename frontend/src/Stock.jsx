@@ -54,9 +54,9 @@ function Stock({ produits, fetchProduits }) {
     return (
         <div className="form-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                <h2>📦 État de Stock</h2>
+                <h2> État de Stock</h2>
                 <button onClick={fetchProduits} className="btn btn-primary">
-                    🔄 Actualiser Stock
+                     Actualiser Stock
                 </button>
             </div>
 
@@ -85,7 +85,7 @@ function Stock({ produits, fetchProduits }) {
                                     onClick={() => ouvrirModalEdit(produit)} 
                                     className="badge badge-warning" style={{ cursor: 'pointer', marginRight: '5px', border: 'none' }}
                                 >
-                                    ✏️ Modifier
+                                     Modifier
                                 </button>
                                 
                                 {/* Bouton Supprimer kayban ghir ila kant l'Qte = 0 */}
@@ -94,7 +94,7 @@ function Stock({ produits, fetchProduits }) {
                                         onClick={() => supprimerProduit(produit.id, produit.designation)} 
                                         className="badge badge-danger" style={{ cursor: 'pointer', border: 'none' }}
                                     >
-                                        🗑️ Supprimer
+                                         Supprimer
                                     </button>
                                 )}
                             </td>

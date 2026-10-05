@@ -61,7 +61,7 @@ function FicheClient() {
 
     return (
         <div style={{ padding: '20px', backgroundColor: '#fff', border: '1px solid #ddd', borderRadius: '8px', marginTop: '20px' }}>
-            <h2>📋 Fiche Client (Historique)</h2>
+            <h2> Fiche Client (Historique)</h2>
             
             {/* --- KHTIYAR L'CLIENT --- */}
             <div style={{ marginBottom: '20px' }}>
@@ -86,7 +86,7 @@ function FicheClient() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#f8f9fa', padding: '15px', borderRadius: '5px', marginBottom: '20px' }}>
                         <div>
                             <h3 style={{ margin: '0 0 10px 0', color: '#007bff' }}>👤 {clientActuel.nom}</h3>
-                            <p style={{ margin: '0' }}>📞 {clientActuel.telephone || 'N/A'} | 📍 {clientActuel.adresse || 'N/A'}</p>
+                            <p style={{ margin: '0' }}> {clientActuel.telephone || 'N/A'} |  {clientActuel.adresse || 'N/A'}</p>
                         </div>
                         <div style={{ textAlign: 'right' }}>
                             <span style={{ fontSize: '14px', color: '#666' }}>Reste à payer (Solde)</span>
@@ -100,7 +100,7 @@ function FicheClient() {
                         
                         {/* JADWAL DYAL LES FACTURES (VENTES) */}
                         <div style={{ flex: '1', minWidth: '400px' }}>
-                            <h4 style={{ color: '#007bff' }}>🛒 Historique des Ventes (Factures)</h4>
+                            <h4 style={{ color: '#007bff' }}> Historique des Ventes (Factures)</h4>
                             <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'left' }}>
                                 <thead style={{ backgroundColor: '#e9ecef' }}>
                                     <tr>
@@ -112,7 +112,7 @@ function FicheClient() {
                                 </thead>
                                 <tbody>
                                     {factures.length === 0 ? (
-                                        <tr><td colSpan="4" style={{ textAlign: 'center' }}>Aucune facture l'had l'client.</td></tr>
+                                        <tr><td colSpan="4" style={{ textAlign: 'center' }}>Aucune facture pour ce client.</td></tr>
                                     ) : (
                                         factures.map(f => (
                                             <tr key={f.id}>
@@ -135,7 +135,7 @@ function FicheClient() {
 
                         {/* JADWAL DYAL LKHALAS (PAIEMENTS) */}
                         <div style={{ flex: '1', minWidth: '400px' }}>
-                            <h4 style={{ color: '#28a745' }}>💰 Historique des Paiements</h4>
+                            <h4 style={{ color: '#28a745' }}> Historique des Paiements</h4>
                             <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'left' }}>
                                 <thead style={{ backgroundColor: '#d4edda' }}>
                                     <tr>
@@ -147,7 +147,7 @@ function FicheClient() {
                                 </thead>
                                 <tbody>
                                     {paiements.length === 0 ? (
-                                        <tr><td colSpan="4" style={{ textAlign: 'center' }}>Aucun paiement mssjel.</td></tr>
+                                        <tr><td colSpan="4" style={{ textAlign: 'center' }}>Aucun paiement enregistré.</td></tr>
                                     ) : (
                                         paiements.map(p => (
                                             <tr key={p.id}>

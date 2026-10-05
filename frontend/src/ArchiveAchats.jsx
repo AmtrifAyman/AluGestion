@@ -109,7 +109,7 @@ function ArchiveAchats() {
 
     return (
         <div className="form-card">
-            <h2>📅 Archive des Achats (Mensuel)</h2>
+            <h2> Archive des Achats (Mensuel)</h2>
 
             {/* --- FILTRAGE B CHHAR W L'3AM --- */}
             <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
@@ -152,7 +152,7 @@ function ArchiveAchats() {
                         <tr>
                             <th>Date</th>
                             <th>Fournisseur</th>
-                            <th>Détails (Sl3a)</th>
+                            <th>Détails </th>
                             <th>Total Achat (DH)</th>
                             <th>Payé (DH)</th>
                             <th>Reste (Crédit)</th>
@@ -160,7 +160,7 @@ function ArchiveAchats() {
                     </thead>
                     <tbody>
                     {achatsDuMois.length === 0 ? (
-                        <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>Makayn 7ta achat f had chhar.</td></tr>
+                        <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>Aucun achat ce mois-ci.</td></tr>
                     ) : (
                         achatsDuMois.map(achat => {
                             const totalAchat = calculerTotalAchat(achat.lignes);

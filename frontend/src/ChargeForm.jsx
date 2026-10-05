@@ -47,14 +47,14 @@ function ChargeForm() {
         <div style={{ padding: '20px', border: '1px solid #dc3545', marginTop: '20px', borderRadius: '5px' }}>
             <form onSubmit={soumettreCharge} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                 
-                <h3 style={{ margin: 0, color: '#dc3545' }}>💸 Enregistrer une Charge (Masrouf)</h3>
+                <h3 style={{ margin: 0, color: '#dc3545' }}> Enregistrer une Charge </h3>
 
                 <div>
                     {/* L'Astuce hya list="liste-designations" */}
                     <input 
                         type="text" 
                         list="liste-designations"
-                        placeholder="Désignation (ex: L'kra, Daw...)" 
+                        placeholder="Désignation (ex: Loyer, Électricité...)" 
                         required 
                         value={charge.designation} 
                         onChange={(e) => setCharge({...charge, designation: e.target.value})} 
@@ -80,7 +80,7 @@ function ChargeForm() {
                 </div>
 
                 <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#dc3545', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 'bold', width: 'fit-content', borderRadius: '4px' }}>
-                    Valider Lmasrouf
+                    Valider La Charge
                 </button>
             </form>
         </div>

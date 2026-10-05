@@ -174,7 +174,7 @@ function FactureForm() {
     return (
         <div className="form-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid var(--border)', paddingBottom: '15px' }}>
-                <h2 style={{ margin: 0 }}>🛒 Nouvelle Vente</h2>
+                <h2 style={{ margin: 0 }}> Nouvelle Vente</h2>
                 <div style={{ padding: '8px 12px', backgroundColor: 'var(--bg-app)', border: '1px solid var(--border)', borderRadius: '6px' }}>
                     <span style={{ color: 'var(--muted)', marginRight: '8px' }}>N°:</span>
                     <strong>{facture.numero_facture}</strong>
@@ -194,7 +194,7 @@ function FactureForm() {
                                         options={clientOptions}
                                         value={selectedClientOption}
                                         onChange={(opt) => setFacture({...facture, client: opt ? opt.value : ''})}
-                                        placeholder="Kteb wla khtar client..."
+                                        placeholder="Saisir ou sélectionner un client..."
                                         isClearable={true}
                                         isSearchable={true}
                                     />
@@ -244,18 +244,18 @@ function FactureForm() {
                     ))}
                     
                     <button type="button" onClick={ajouterLigne} className="btn btn-outline" style={{ marginTop: '10px' }}>
-                        ➕ Zid Produit
+                        ➕ Ajouter un produit
                     </button>
                 </div>
 
                 {/* Section 3: Remise */}
                 <div style={{ backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '20px', borderRadius: '8px', marginBottom: '25px', border: '1px solid rgba(245, 158, 11, 0.3)' }}>
-                    <h4 style={{ color: 'var(--warning)', marginBottom: '15px' }}>🎁 Remise (Khasm)</h4>
+                    <h4 style={{ color: 'var(--warning)', marginBottom: '15px' }}> Remise </h4>
                     <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                         <div className="form-group" style={{ flex: 1 }}>
                             <label>Type de Remise</label>
                             <select className="form-control" value={facture.type_remise} onChange={(e) => setFacture({...facture, type_remise: e.target.value, valeur_remise: 0})}>
-                                <option value="AUCUNE">Aucune (Makanx Remise)</option>
+                                <option value="AUCUNE">Aucune </option>
                                 <option value="POURCENTAGE">Pourcentage (%)</option>
                                 <option value="MONTANT">Montant Fixe (DH)</option>
                             </select>
@@ -272,7 +272,7 @@ function FactureForm() {
                 {/* Section 4: Paiements & Totaux */}
                 <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
                     <div style={{ flex: '1 1 300px', backgroundColor: 'var(--bg-app)', padding: '20px', borderRadius: '8px' }}>
-                        <h3 style={{ marginBottom: '20px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>💸 Lkhalas (Avance)</h3>
+                        <h3 style={{ marginBottom: '20px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}> Paiement (Avance)</h3>
                         <div className="form-group" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '15px' }}>
                             <label style={{ margin: 0 }}>Espèce (DH)</label>
                             <input type="number" step="0.01" min="0" className="form-control" style={{ width: '150px' }} value={paiements.espece} onChange={(e) => setPaiements({...paiements, espece: e.target.value})} />
@@ -305,7 +305,7 @@ function FactureForm() {
                                 <span style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--success)' }}>{totaux.ttc.toFixed(2)} DH</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px', marginBottom: '15px' }}>
-                                <span>Khlesna fih :</span>
+                                <span>Payé:</span>
                                 <span>{totaux.paye.toFixed(2)} DH</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '16px', fontWeight: 'bold', padding: '10px', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '6px' }}>

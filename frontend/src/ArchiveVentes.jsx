@@ -126,7 +126,7 @@ function ArchiveVentes() {
 
     return (
         <div className="form-card">
-            <h2>📅 Archive des Ventes (Mensuel)</h2>
+            <h2> Archive des Ventes (Mensuel)</h2>
 
             {/* --- FILTRAGE B CHHAR W L'3AM --- */}
             <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', alignItems: 'flex-end', flexWrap: 'wrap' }}>
@@ -169,15 +169,15 @@ function ArchiveVentes() {
                         <tr>
                             <th>Date</th>
                             <th>Client</th>
-                            <th>Détails Sl3a (Quantité x Produit)</th>
+                            <th>Détails  (Quantité x Produit)</th>
                             <th>Total TTC (DH)</th>
-                            <th>Ch7al Khles (DH)</th>
+                            <th>Montant payé (DH)</th>
                             <th>Reste (Crédit Client)</th>
                         </tr>
                     </thead>
                     <tbody>
                     {facturesDuMois.length === 0 ? (
-                        <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px', color: '#666' }}>Makayn 7ta vente msejla f had chhar.</td></tr>
+                        <tr><td colSpan="6" style={{ textAlign: 'center', padding: '20px', color: '#666' }}>Aucune vente n'est enregistrée ce mois-ci.</td></tr>
                     ) : (
                         facturesDuMois.map(fac => {
                             const totalTTC = calculerTotalTTC(fac);

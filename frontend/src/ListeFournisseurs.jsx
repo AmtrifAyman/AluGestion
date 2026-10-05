@@ -19,8 +19,8 @@ function ListeFournisseurs() {
 
     return (
         <div style={{ padding: '20px', backgroundColor: '#fff', border: '1px solid #ddd', borderRadius: '8px', marginTop: '20px' }}>
-            <h2>🏭 Liste des Fournisseurs (Dettes)</h2>
-            <h4 style={{ color: '#ff8c00' }}>Total li kaysalona: {totalDettes.toFixed(2)} DH</h4>
+            <h2>Liste des Fournisseurs (Dettes)</h2>
+            <h4 style={{ color: '#ff8c00' }}>Total des dettes fournisseurs: {totalDettes.toFixed(2)} DH</h4>
             
             <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'left', marginTop: '15px' }}>
                 <thead style={{ backgroundColor: '#fff3cd' }}>
@@ -28,7 +28,7 @@ function ListeFournisseurs() {
                         <th>Nom du Fournisseur</th>
                         <th>Téléphone</th>
                         <th>Adresse</th>
-                        <th style={{ textAlign: 'right' }}>Solde (Ch7al kaysalna)</th>
+                        <th style={{ textAlign: 'right' }}>Solde </th>
                     </tr>
                 </thead>
                 <tbody>

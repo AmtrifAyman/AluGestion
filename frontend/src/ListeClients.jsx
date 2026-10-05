@@ -19,8 +19,8 @@ function ListeClients() {
 
     return (
         <div style={{ padding: '20px', backgroundColor: '#fff', border: '1px solid #ddd', borderRadius: '8px', marginTop: '20px' }}>
-            <h2>👥 Liste des Clients (Kridiyat)</h2>
-            <h4 style={{ color: '#dc3545' }}>Total kridiyat 3la l'kliyan: {totalCredits.toFixed(2)} DH</h4>
+            <h2> Liste des Clients </h2>
+            <h4 style={{ color: '#dc3545' }}>Total des crédits clients: {totalCredits.toFixed(2)} DH</h4>
             
             <table border="1" cellPadding="10" style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'left', marginTop: '15px' }}>
                 <thead style={{ backgroundColor: '#e9ecef' }}>
@@ -28,7 +28,7 @@ function ListeClients() {
                         <th>Nom du Client</th>
                         <th>Téléphone</th>
                         <th>Adresse</th>
-                        <th style={{ textAlign: 'right' }}>Solde (Ch7al kansaloh)</th>
+                        <th style={{ textAlign: 'right' }}>Solde </th>
                     </tr>
                 </thead>
                 <tbody>
