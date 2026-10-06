@@ -5,6 +5,7 @@ function AchatForm() {
     const [fournisseurs, setFournisseurs] = useState([]);
     const [produits, setProduits] = useState([]);
     const [paiements, setPaiements] = useState({ espece: 0, cheque: 0, virement: 0 });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     // ZEDNA LES STATES DYAL L'MODAL FOURNISSEUR
     const [showFournisseurModal, setShowFournisseurModal] = useState(false);
@@ -80,7 +81,12 @@ function AchatForm() {
 
     const soumettreAchat = async (e) => {
         e.preventDefault();
+        if (isSubmitting) return;
+        setIsSubmitting(true);
         try {
+            const operationKey = crypto.randomUUID
+                ? crypto.randomUUID()
+                : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
             const lignesAEnvoyer = [];
 
             // 1. Kankryiw les nouveaux produits wla n'mttewhom à jour
@@ -113,6 +119,7 @@ function AchatForm() {
             const dataAchat = {
                 fournisseur: achat.fournisseur,
                 numero_facture: achat.numero_facture === '' ? null : achat.numero_facture,
+                operation_key: operationKey,
             };
 
             const resAchat = await API.post('/api/api/achats/', dataAchat);
@@ -140,6 +147,8 @@ function AchatForm() {
         } catch (error) {
             console.error("Mochkil f tsjal:", error.response?.data || error);
             alert("Kayn mochkil f tsjal. T2aked mn les informations.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -248,7 +257,7 @@ function AchatForm() {
                     </div>
                 </div>
 
-                <button type="submit" style={{ padding: '12px 25px', backgroundColor: '#28a745', color: 'white', border: 'none', cursor: 'pointer', fontSize: '16px' }}>Valider l'Achat</button>
+                <button type="submit" disabled={isSubmitting} style={{ padding: '12px 25px', backgroundColor: '#28a745', color: 'white', border: 'none', cursor: 'pointer', fontSize: '16px' }}>Valider l'Achat</button>
             </form>
 
             {showFournisseurModal && (
